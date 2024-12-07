@@ -12,28 +12,46 @@ formOptions();
 circle = {
     polomer: 0,
     form: function() {
-        return "<input type='number' id='polomer' placeholder='Poloměr kruhu'>";
+        return "<label for=polomer>Poloměr kruhu v cm</label><input type='number' id='polomer' placeholder='Poloměr kruhu'>";
     },
     obvod: function() {
-        return 2 * Math.PI * this.polomer;
+        if (this.polomer > 0) {
+            answer = Math.round((2 * Math.PI * this.polomer)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     },
     obsah: function() {
-        return Math.PI * this.polomer * this.polomer;
+        if (this.polomer > 0) {
+            answer = Math.round((Math.PI * this.polomer * this.polomer)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     }
 }
 
 square = {
     strana: 0,
     form: function() {
-        return "<input type='number' id='strana' placeholder='Strana čtverce'>";
+        return "<label for=strana>Strana čtverce v cm</label><input type='number' id='strana' placeholder='Strana čtverce'>";
     },
     obvod: function() {
-        answer = 4 * this.strana;
-        return String(answer);
+        if (this.strana > 0) {
+            answer = Math.round((4 * this.strana)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     },
     obsah: function() {
-        answer = this.strana * this.strana;
-        return String(answer);
+        if (this.strana > 0) {
+            answer = Math.round((this.strana * this.strana)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     }
 }
 
@@ -41,15 +59,24 @@ rectangle = {
     strana1: 0,
     strana2: 0,
     form: function() {
-        return "<input type='number' id='strana1' placeholder='Strana obdélníku'><input type='number' id='strana2' placeholder='Druhá strana obdélníku'>";
+        return "<label for=strana1>První strana obdelníku v cm</label><input type='number' id='strana1' placeholder='První strana obdelníku'><label for=strana2>Druhá strana obdelníku v cm</label><input type='number' id='strana2' placeholder='Druhá strana obdelníku'>";
     },
     obvod: function() {
-        answer = 2 * this.strana1 + 2 * this.strana2;
-        return String(answer);
+        if (this.strana1 > 0 && this.strana2 > 0) {
+            answer = Math.round((2 * this.strana1 + 2 * this.strana2)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     },
     obsah: function() {
-        answer = this.strana1 * this.strana2;
-        return String(answer);
+        if (this.strana1 > 0 && this.strana2 > 0) {
+            answer = Math.round((this.strana1 * this.strana2)*100)/100;
+            console.log(answer);
+            return String(answer);
+        }else{
+            return "?";
+        }
     }
 }
 
@@ -58,16 +85,24 @@ triangle = {
     strana2: 0,
     strana3: 0,
     form: function() {
-        return "<input type='number' id='strana1' placeholder='Strana trojúhelníku'><input type='number' id='strana2' placeholder='Druhá strana trojúhelníku'><input type='number' id='strana3' placeholder='Třetí strana trojúhelníku'>";
+        return "<label for=strana1>První strana trojúhelníku v cm</label><input type='number' id='strana1' placeholder='První strana trojúhelníku'><label for=strana2>Druhá strana trojúhelníku v cm</label><input type='number' id='strana2' placeholder='Druhá strana trojúhelníku'><label for=strana3>Třetí strana trojúhelníku v cm</label><input type='number' id='strana3' placeholder='Třetí strana trojúhelníku'>";
     },
     obvod: function() {
-        answer= this.strana1 + this.strana2 + this.strana3;
-        return String(answer);
+        if (this.strana1 > 0 && this.strana2 > 0 && this.strana3 > 0) {
+            answer= Math.round((this.strana1 + this.strana2 + this.strana3)*100)/100;
+            return String(answer);
+        }else{
+            return "?";
+        }
     },
     obsah: function() {
-        s = (this.strana1 + this.strana2 + this.strana3) / 2;
-        answer = Math.sqrt(s * (s - this.strana1) * (s - this.strana2) * (s - this.strana3));
-        return String(answer);
+        if (this.strana1 > 0 && this.strana2 > 0 && this.strana3 > 0) {
+            s = Math.round((this.strana1 + this.strana2 + this.strana3)/2*100)/100;
+            answer = Math.sqrt(s * (s - this.strana1) * (s - this.strana2) * (s - this.strana3));
+            return String(answer);
+        }else{
+            return "?";
+        }
     }
 }
 
@@ -79,17 +114,27 @@ menu.addEventListener("change", function() {
         formular.innerHTML = "";
         if (menu.value == "Kruh") {
             formular.innerHTML = circle.form();
+            document.getElementById("obvod").innerHTML = "Obvod: ? cm";
+            document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
         } else if (menu.value == "Čtverec") {
-            formular.innerHTML = rectangle.form();
-        } else if (menu.value == "Obdelník") {
             formular.innerHTML = square.form();
+            document.getElementById("obvod").innerHTML = "Obvod: ? cm";
+            document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
+        } else if (menu.value == "Obdelník") {
+            formular.innerHTML = rectangle.form();
+            document.getElementById("obvod").innerHTML = "Obvod: ? cm";
+            document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
         } else if (menu.value == "Trojúhelník") {
             formular.innerHTML = triangle.form();
+            document.getElementById("obvod").innerHTML = "Obvod: ? cm";
+            document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
         }
     }
     else {
         formular = document.getElementById("form");
-        formular.innerHTML = "";
+        formular.innerHTML = "Vyberte tvar obrazce pro zobrazení formuláře.";
+        document.getElementById("obvod").innerHTML = "Obvod: ? cm";
+        document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
         console.log("nic vybrano");
     }
 });
@@ -98,25 +143,25 @@ submitButton.addEventListener("click", function() {
     console.log(menu.value);
     if (menu.value == "Kruh") {
         circle.polomer = parseFloat(document.getElementById("polomer").value);
-        document.getElementById("obvod").innerHTML = "Obvod: "+circle.obvod();
-        document.getElementById("obsah").innerHTML = "Obsah: "+circle.obsah();
+        document.getElementById("obvod").innerHTML = "Obvod: "+circle.obvod() + " cm";
+        document.getElementById("obsah").innerHTML = "Obsah: "+circle.obsah() + " cm²";
     } else if (menu.value == "Čtverec") {
         square.strana = parseFloat(document.getElementById("strana").value);
-        document.getElementById("obvod").innerHTML = "Obvod: "+square.obvod();
-        document.getElementById("obsah").innerHTML = "Obsah: "+square.obsah();
+        document.getElementById("obvod").innerHTML = "Obvod: "+square.obvod() + " cm";
+        document.getElementById("obsah").innerHTML = "Obsah: "+square.obsah() + " cm²";
     }
     else if (menu.value == "Obdelník") {
         rectangle.strana1 = parseFloat(document.getElementById("strana1").value);
         rectangle.strana2 = parseFloat(document.getElementById("strana2").value);
-        document.getElementById("obvod").innerHTML = "Obvod: "+rectangle.obvod();
-        document.getElementById("obsah").innerHTML = "Obsah: "+rectangle.obsah();
+        document.getElementById("obvod").innerHTML = "Obvod: "+rectangle.obvod() + " cm";
+        document.getElementById("obsah").innerHTML = "Obsah: "+rectangle.obsah() + " cm²";
     }
     else if (menu.value == "Trojúhelník") {
         triangle.strana1 = parseFloat(document.getElementById("strana1").value);
         triangle.strana2 = parseFloat(document.getElementById("strana2").value);
         triangle.strana3 = parseFloat(document.getElementById("strana3").value);
-        document.getElementById("obvod").innerHTML = "Obvod: "+triangle.obvod();
-        document.getElementById("obsah").innerHTML = "Obsah: "+triangle.obsah();
+        document.getElementById("obvod").innerHTML = "Obvod: "+triangle.obvod() + " cm";
+        document.getElementById("obsah").innerHTML = "Obsah: "+triangle.obsah() + " cm²";
     } else {
         console.log("nic vybrano");
     }
