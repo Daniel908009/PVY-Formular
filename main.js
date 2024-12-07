@@ -12,7 +12,7 @@ formOptions();
 circle = {
     polomer: 0,
     form: function() {
-        return "<label for=polomer>Poloměr kruhu v cm</label><input type='number' id='polomer' placeholder='Poloměr kruhu'>";
+        return "<label for=polomer class='col-sm-3 col-form-label'>Poloměr v cm</label><input type='number' id='polomer' placeholder='Poloměr kruhu' class='col-sm-9'>";
     },
     obvod: function() {
         if (this.polomer > 0) {
@@ -35,7 +35,7 @@ circle = {
 square = {
     strana: 0,
     form: function() {
-        return "<label for=strana>Strana čtverce v cm</label><input type='number' id='strana' placeholder='Strana čtverce'>";
+        return "<label for=strana class='col-sm-3 col-form-label'>Strana v cm</label><input type='number' id='strana' placeholder='Strana čtverce' class='col-sm-9'>";
     },
     obvod: function() {
         if (this.strana > 0) {
@@ -59,7 +59,7 @@ rectangle = {
     strana1: 0,
     strana2: 0,
     form: function() {
-        return "<label for=strana1>První strana obdelníku v cm</label><input type='number' id='strana1' placeholder='První strana obdelníku'><label for=strana2>Druhá strana obdelníku v cm</label><input type='number' id='strana2' placeholder='Druhá strana obdelníku'>";
+        return "<label for=strana1 class='col-sm-3 col-form-label'>První strana v cm</label><input type='number' id='strana1' placeholder='První strana obdelníku' class='col-sm-9'><label for=strana2 class='col-sm-3 col-form-label'>Druhá strana v cm</label><input type='number' id='strana2' placeholder='Druhá strana obdelníku' class='col-sm-9'>";
     },
     obvod: function() {
         if (this.strana1 > 0 && this.strana2 > 0) {
@@ -85,7 +85,7 @@ triangle = {
     strana2: 0,
     strana3: 0,
     form: function() {
-        return "<label for=strana1>První strana trojúhelníku v cm</label><input type='number' id='strana1' placeholder='První strana trojúhelníku'><label for=strana2>Druhá strana trojúhelníku v cm</label><input type='number' id='strana2' placeholder='Druhá strana trojúhelníku'><label for=strana3>Třetí strana trojúhelníku v cm</label><input type='number' id='strana3' placeholder='Třetí strana trojúhelníku'>";
+        return "<label for=strana1 class = 'col-sm-3 col-form-label'>První strana v cm</label><input type='number' id='strana1' placeholder='První strana trojúhelníku' class='col-sm-9'><label for=strana2 class='col-sm-3 col-form-label'>Druhá strana v cm</label><input type='number' id='strana2' placeholder='Druhá strana trojúhelníku' class='col-sm-9'><label for=strana3 class='col-sm-3 col-form-label'>Třetí strana v cm</label><input type='number' id='strana3' placeholder='Třetí strana trojúhelníku' class='col-sm-9'>";
     },
     obvod: function() {
         if (this.strana1 > 0 && this.strana2 > 0 && this.strana3 > 0) {
@@ -132,7 +132,7 @@ menu.addEventListener("change", function() {
     }
     else {
         formular = document.getElementById("form");
-        formular.innerHTML = "Vyberte tvar obrazce pro zobrazení formuláře.";
+        formular.innerHTML = "<label class='col-sm-12 p-3'>Vyberte tvar obrazce pro zobrazení formuláře.</label>";
         document.getElementById("obvod").innerHTML = "Obvod: ? cm";
         document.getElementById("obsah").innerHTML = "Obsah: ? cm²";
         console.log("nic vybrano");

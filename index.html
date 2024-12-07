@@ -15,6 +15,7 @@
     <main class="container text-center">
         <h2>Výpočetní kalkulačka obvodu a obsahu</h2>
         <form>
+
             <div class="form-group row col-sm-6 offset-sm-3">
                 <label for="shape" class="col-sm-3 col-form-label">Tvar obrazce</label>
                 <div class="col-sm-9">
@@ -22,14 +23,17 @@
                 </select>
                 </div>
             </div>
-            <div class="form-group row col-sm-6 offset-sm-3" id="form">
-                <label>Vyberte tvar obrazce pro zobrazení formuláře.</label>
+
+            <div class="form-group row col-sm-6 offset-sm-3 p-3" id="form">
+                <label class="col-sm-12">Vyberte tvar obrazce pro zobrazení formuláře.</label>
             </div>
-            <div class="form-group row col-sm-4 offset-sm-4 p-3">
+
+            <div class="form-group row col-sm-4 offset-sm-4 p-2">
                 <button type="button" class="btn btn-secondary" id="submit_button">Vypočítat</button>
             </div>
+
         </form>
-        <div class="row col-sm-6 offset-sm-3 pb-1">
+        <div class="row col-sm-6 offset-sm-3 p-1">
             <div class="col-sm-6"id="obvod">
                 <p>Obvod: ? cm</p>
             </div>
